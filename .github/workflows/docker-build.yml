@@ -17,17 +17,17 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: yumata/lampa-source
-          path: src
+          path: lampa-source
 
       - name: Checkout Your Repository
         uses: actions/checkout@v4
         with:
-          path: docker
+          path: this-repo
 
       - name: Copy Dockerfile
         run: |
-          cp -vf docker/Dockerfile src/Dockerfile
-          find
+          cp -vf this-repo/Dockerfile lampa-source/Dockerfile
+          find -name Dockerfile
 
       - name: Set up versioning
         id: vars
@@ -49,8 +49,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          context: src
-          file: Dockerfile
+          context: lampa-source
           platforms: linux/amd64
           push: true
           tags: emergy/lampa:latest,emergy/lampa:${{ steps.vars.outputs.TAG }}
