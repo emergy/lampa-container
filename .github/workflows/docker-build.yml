@@ -13,6 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Your Repository
+        uses: actions/checkout@v4
+        with:
+          path: main-repo
+
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
@@ -40,7 +45,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: lampa-source
-          file: lampa-source/Dockerfile
+          file: ../main-repo/Dockerfile
           platforms: linux/amd64
           push: true
           tags: emergy/lampa:latest,emergy/lampa:${{ steps.vars.outputs.TAG }}
