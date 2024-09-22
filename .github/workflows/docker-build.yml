@@ -33,7 +33,7 @@ jobs:
         run: |
           GITHUB_SHA=${GITHUB_SHA::7}
           DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          TAG=$(date -u +"%Y.%m.%d.%H.%M")
+          TAG=$(date -u +"%Y.%m.%d.%H%M%S")
           echo "TAG=${TAG}" >> $GITHUB_OUTPUT
           echo "BUILD_DATE=${DATE}" >> $GITHUB_OUTPUT
           echo "GITHUB_SHA=${GITHUB_SHA}" >> $GITHUB_OUTPUT
