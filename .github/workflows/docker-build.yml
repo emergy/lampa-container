@@ -25,7 +25,9 @@ jobs:
           path: docker
 
       - name: Copy Dockerfile
-        run: cp -vf docker/Dockerfile src/Dockerfile
+        run: |
+          cp -vf docker/Dockerfile src/Dockerfile
+          find
 
       - name: Set up versioning
         id: vars
