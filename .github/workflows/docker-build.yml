@@ -27,7 +27,6 @@ jobs:
       - name: Copy Dockerfile
         run: |
           cp -vf this-repo/Dockerfile lampa-source/Dockerfile
-          find -name Dockerfile
 
       - name: Set up versioning
         id: vars
